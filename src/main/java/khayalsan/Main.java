@@ -51,6 +51,7 @@ public class Main {
             System.out.println("Let's start the game!");
             int guess;
 
+            long start = System.currentTimeMillis(); // to get how much time player spent
             round: // name of the loop
             while (true) {
                 System.out.print("Enter your guess: ");
@@ -59,7 +60,8 @@ public class Main {
 
                 switch (state) {
                     case WON -> {
-                        System.out.println("Congratulations! You guessed the correct number in " + game.getAttempts() + " attempts.");
+                        long elapsed = (System.currentTimeMillis() - start) / 1000; //seconds since start
+                        System.out.println("Congratulations! You guessed the correct number in " + elapsed + " seconds using " + game.getAttempts() + " attempts.");
                         break round;
                     }
                     case GREATER, LESS -> {
@@ -67,7 +69,8 @@ public class Main {
                         break;
                     }
                     case LOST -> {
-                        System.out.println("Incorrect! You ran out of attempts. The correct number was " + game.cheat());
+                        long elapsed = (System.currentTimeMillis() - start) / 1000;
+                        System.out.println("Incorrect! You ran out of attempts. The correct number was " + game.cheat() + ". This round lasted " + elapsed + " seconds.");
                         break round;
                     }
                 }
