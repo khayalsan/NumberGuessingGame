@@ -10,6 +10,7 @@ public class Main {
                 """
                 Welcome to the Number Guessing Game!
                 I'm thinking of a number between 1 and 100.
+                You have only limited number of chances to guess the correct number.
                 Please select the difficulty level:
                     1. Easy (10 chances)
                     2. Medium (5 chances)

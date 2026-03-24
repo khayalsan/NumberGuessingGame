@@ -24,9 +24,9 @@ public class NumberGuessingGame {
     }
 
     public GameState guess(int guess) {
+        chances--;
+        attempts++;
         if (canGuess()) {
-            chances--;
-            attempts++;
             if (guess == number) {
                 return GameState.WON;
             }
