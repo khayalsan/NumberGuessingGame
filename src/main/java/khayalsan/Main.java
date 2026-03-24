@@ -40,7 +40,7 @@ public class Main {
                         yield 3;
                     }
                     default -> {
-                        System.out.print("Invalid input! Try again: ");
+                        System.out.println("Invalid input!");
                         yield 0;
                     }
                 });
