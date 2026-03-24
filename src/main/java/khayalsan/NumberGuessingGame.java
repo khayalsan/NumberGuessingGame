@@ -40,6 +40,11 @@ public class NumberGuessingGame {
         else {
             return GameState.LOST;
         }
+    }
 
+    public void reset() {
+        attempts = 0;
+        chances = 0;
+        number = new Random().nextInt(100) + 1;
     }
 }
