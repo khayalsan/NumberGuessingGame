@@ -26,7 +26,7 @@ public class Main {
             String difficulty = "Invalid";
             do {
                 System.out.print("Enter Difficulty Level: ");
-                game.setChances(switch (scanner.nextInt()) {
+                game.setChances(switch (getInt(scanner)) {
                     case 1 -> {
                         difficulty = "Easy";
                         yield 10;
@@ -40,7 +40,7 @@ public class Main {
                         yield 3;
                     }
                     default -> {
-                        System.out.println("Invalid input!");
+                        System.out.print("Invalid input! Try again: ");
                         yield 0;
                     }
                 });
@@ -55,7 +55,7 @@ public class Main {
             round: // name of the loop
             while (true) {
                 System.out.print("Enter your guess: ");
-                guess = scanner.nextInt();
+                guess = getInt(scanner);
                 GameState state = game.guess(guess);
 
                 switch (state) {
@@ -76,7 +76,7 @@ public class Main {
                 }
             }
             System.out.println("Do you want to play again? (1 - yes | 0 - no): ");
-            boolean stopPlaying = scanner.nextInt() != 1;
+            boolean stopPlaying = getInt(scanner) != 1;
             if (stopPlaying) {
                 System.out.println("Thanks for playing!");
                 break game;
@@ -84,5 +84,19 @@ public class Main {
             game.reset();
         }
         scanner.close();
+
+    }
+
+    private static int getInt(Scanner scanner) {
+        int number;
+        while (true) {
+            try {
+                return scanner.nextInt();
+            }
+            catch (Exception e) {
+                System.out.print("Invalid input! Try again: ");
+                scanner.nextLine();
+            }
+        }
     }
 }
